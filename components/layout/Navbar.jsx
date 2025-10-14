@@ -132,11 +132,11 @@ export default function Navbar() {
     <nav className="bg-gradient-to-b from-purple-900/50 to-slate-900 py-6 p-4 sticky top-0 z-50 shadow-lg transition-colors duration-300">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          {/* Logo dengan nama baru MovieFlow */}
+          {/* Logo dengan nama baru MoviesFlow */}
           <Link href="/" className="flex items-center text-3xl font-bold transition-colors duration-200 group">
             <FaVideo className="text-white mr-2 group-hover:text-yellow-200 transition-colors" />
-            <span className="MovieFlow-logo hover:text-white transition-colors">
-              MovieFlow
+            <span className="MoviesFlow-logo hover:text-white transition-colors">
+              MoviesFlow
             </span>
           </Link>
           <div className="hidden md:flex items-center space-x-4">
@@ -384,9 +384,9 @@ export default function Navbar() {
         </div>
       )}
       
-      {/* CSS untuk efek MovieFlow logo */}
+      {/* CSS untuk efek MoviesFlow logo */}
       <style jsx>{`
-        .MovieFlow-logo {
+        .MoviesFlow-logo {
           font-size: 1.8rem;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           -webkit-background-clip: text;
@@ -396,7 +396,7 @@ export default function Navbar() {
           letter-spacing: -0.5px;
         }
         
-        .MovieFlow-logo:hover {
+        .MoviesFlow-logo:hover {
           background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
           -webkit-background-clip: text;
           background-clip: text;

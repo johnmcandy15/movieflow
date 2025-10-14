@@ -15,7 +15,7 @@ export default function AdsterraLayoutWrapper({ children }) {
         try {
           // Memuat skrip iklan Native Banner
           const nativeBannerScript = document.createElement('script');
-          nativeBannerScript.src = "//eminencehillsidenutrition.com/496dde0123448ad6ccb4db9daf5371c8/invoke.js";
+          nativeBannerScript.src = "//eminencehillsidenutrition.com/a972afd9ef6f79d311ad85394e94e941/invoke.js";
           nativeBannerScript.async = true;
           nativeBannerScript.setAttribute('data-cfasync', 'false');
           nativeBannerScript.id = 'adsterra-native-banner';
@@ -25,7 +25,7 @@ export default function AdsterraLayoutWrapper({ children }) {
           // Memuat skrip iklan Popunder
           const popunderScript = document.createElement('script');
           popunderScript.type = 'text/javascript';
-          popunderScript.src = "//eminencehillsidenutrition.com/8a/d6/af/8ad6af416314aafc6add60c81ac98829.js";
+          popunderScript.src = "//eminencehillsidenutrition.com/36/96/d3/3696d38e5fba4e62f5224cfc9b0e04b1.js";
           popunderScript.async = true;
           popunderScript.id = 'adsterra-popunder';
           popunderScript.onerror = () => console.error('Failed to load Popunder script');
@@ -34,7 +34,7 @@ export default function AdsterraLayoutWrapper({ children }) {
           // Memuat skrip iklan Social Bar
           const socialBarScript = document.createElement('script');
           socialBarScript.type = 'text/javascript';
-          socialBarScript.src = "//eminencehillsidenutrition.com/fd/12/ad/fd12ad0946db36cd36365fe80c816e41.js";
+          socialBarScript.src = "//eminencehillsidenutrition.com/35/c2/3f/35c23f97dc89a6b93f76f1e1591e690c.js";
           socialBarScript.async = true;
           socialBarScript.id = 'adsterra-social-bar';
           socialBarScript.onerror = () => console.error('Failed to load Social Bar script');

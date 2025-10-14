@@ -4,20 +4,20 @@ import Footer from '../components/layout/Footer';
 import AdsterraLayoutWrapper from '../components/AdsterraLayoutWrapper';
 
 export const metadata = {
-  title: 'MovieFlow | Stream Movies & TV Series Free - Complete Movie Database',
-  description: 'MovieFlow is your ultimate movie database with 10,000+ movies, 5,000+ TV series, actor profiles, genre pages, and yearly archives. Discover, stream, and enjoy cinematic excellence with our comprehensive entertainment platform.',
+  title: 'MoviesFlow | Stream Movies & TV Series Free - Complete Movie Database',
+  description: 'MoviesFlow is your ultimate movie database with 10,000+ movies, 5,000+ TV series, actor profiles, genre pages, and yearly archives. Discover, stream, and enjoy cinematic excellence with our comprehensive entertainment platform.',
   keywords: 'watch movies, stream tv series, movie database, watch now, free movies, tv shows, actors, genres, rankings',
   openGraph: {
-    title: 'MovieFlow | Complete Movie & TV Series Database',
+    title: 'MoviesFlow | Complete Movie & TV Series Database',
     description: 'Your ultimate destination for movies, TV series, actor profiles, and streaming information. Explore genres, yearly archives, and top rankings.',
-    url: 'https://MovieFlow.vercel.app/',
-    siteName: 'MovieFlow',
+    url: 'https://MoviesFlow.netlify.app/',
+    siteName: 'MoviesFlow',
     images: [
       {
-        url: 'https://live.staticflickr.com/65535/54844423650_2eea561c34_b.jpg',
+        url: 'https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg',
         width: 1200,
         height: 630,
-        alt: 'MovieFlow - Complete Movie Database',
+        alt: 'MoviesFlow - Complete Movie Database',
       },
     ],
     locale: 'en_US',
@@ -25,11 +25,11 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@MovieFlowMovies',
-    creator: '@MovieFlowMovies',
-    title: 'MovieFlow | Complete Movie & TV Series Database',
-    description: 'Explore 10,000+ movies, 5,000+ TV series, actor profiles, and streaming guides on MovieFlow.',
-    images: ['https://live.staticflickr.com/65535/54844423650_2eea561c34_b.jpg'],
+    site: '@WatchStream123',
+    creator: '@WatchStream123',
+    title: 'MoviesFlow | Complete Movie & TV Series Database',
+    description: 'Explore 10,000+ movies, 5,000+ TV series, actor profiles, and streaming guides on MoviesFlow.',
+    images: ['https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg'],
   },
   other: {
     'fb:app_id': '100074345305108',
@@ -50,12 +50,12 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MovieDatabase",
-              "name": "MovieFlow",
+              "name": "MoviesFlow",
               "description": "Complete movie and TV series database with streaming information",
-              "url": "https://MovieFlow.vercel.app/",
-              "logo": "https://live.staticflickr.com/65535/54844423650_2eea561c34_b.jpg",
+              "url": "https://MoviesFlow.netlify.app/",
+              "logo": "https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg",
               "sameAs": [
-                "https://MovieFlow.vercel.app/"
+                "https://MoviesFlow.netlify.app/"
               ]
             })
           }}
@@ -72,7 +72,7 @@ export default function RootLayout({ children }) {
             </main>
             <footer className="w-full max-w-7xl mx-auto px-4 py-8">
               {/* Tempatkan div Native Banner di sini, sebelum Footer */}
-              <div id="container-496dde0123448ad6ccb4db9daf5371c8"></div>
+              <div id="container-a972afd9ef6f79d311ad85394e94e941"></div>
               <Footer />
             </footer>
           </div>

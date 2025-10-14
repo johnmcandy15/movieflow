@@ -217,22 +217,22 @@ export async function generateMetadata({ params }) {
   if (CATEGORIES.includes(slug)) {
     const title = slug.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     return {
-      title: `${title} TV Series - WatchNow`,
-      description: `Browse the ${title} TV series collection on WatchNow. Stream legally on your favorite platforms.`,
+      title: `${title} TV Series - MoviesFlow`,
+      description: `Browse the ${title} TV series collection on MoviesFlow. Stream legally on your favorite platforms.`,
       openGraph: {
-        title: `${title} TV Series - WatchNow`,
-        description: `Explore the ${title} TV series collection on WatchNow.`,
-        url: `https://watchnow-movies.vercel.app/tv-show/${slug}`,
-        siteName: 'WatchNow',
+        title: `${title} TV Series - MoviesFlow`,
+        description: `Explore the ${title} TV series collection on MoviesFlow.`,
+        url: `https://MoviesFlow.netlify.app/tv-show/${slug}`,
+        siteName: 'MoviesFlow',
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${title} TV Series - WatchNow`,
-        description: `Explore ${title} TV series on WatchNow`,
+        title: `${title} TV Series - MoviesFlow`,
+        description: `Explore ${title} TV series on MoviesFlow`,
       },
       alternates: {
-        canonical: `https://watchnow-movies.vercel.app/tv-show/${slug}`,
+        canonical: `https://MoviesFlow.netlify.app/tv-show/${slug}`,
       },
     };
   }
@@ -242,13 +242,13 @@ export async function generateMetadata({ params }) {
   if (isGenre) {
     const genreName = slug.replace(/-/g, ' ');
     return {
-      title: `${genreName} TV Series - WatchNow`,
-      description: `Discover the best ${genreName} TV series on WatchNow.`,
+      title: `${genreName} TV Series - MoviesFlow`,
+      description: `Discover the best ${genreName} TV series on MoviesFlow.`,
       openGraph: {
-        title: `${genreName} TV Series - WatchNow`,
-        description: `Explore ${genreName} TV series collection on WatchNow.`,
-        url: `https://watchnow-movies.vercel.app/tv-show/genre/${slug}`,
-        siteName: 'WatchNow',
+        title: `${genreName} TV Series - MoviesFlow`,
+        description: `Explore ${genreName} TV series collection on MoviesFlow.`,
+        url: `https://MoviesFlow.netlify.app/tv-show/genre/${slug}`,
+        siteName: 'MoviesFlow',
         type: 'website',
       },
     };
@@ -286,8 +286,8 @@ export async function generateMetadata({ params }) {
 
   if (!tvShowData) {
     return {
-      title: 'TV Series Not Found - WatchNow',
-      description: 'Find thousands of TV series and movies to stream on WatchNow.',
+      title: 'TV Series Not Found - MoviesFlow',
+      description: 'Find thousands of TV series and movies to stream on MoviesFlow.',
     };
   }
 
@@ -301,16 +301,16 @@ export async function generateMetadata({ params }) {
   const tvShowYear = tvShowData.first_air_date ? new Date(tvShowData.first_air_date).getFullYear() : currentYear;
 
   return {
-    title: `${tvShowData.name} (${tvShowYear}) - Watch Now & Stream - WatchNow`,
+    title: `${tvShowData.name} (${tvShowYear}) - Watch Now & Stream - MoviesFlow`,
     description: tvShowData.overview 
-      ? `${tvShowData.overview.substring(0, 160)}... Find where to stream ${tvShowData.name} legally on WatchNow.`
-      : `Watch ${tvShowData.name} (${tvShowYear}). Find streaming options, cast information, and reviews on WatchNow.`,
+      ? `${tvShowData.overview.substring(0, 160)}... Find where to stream ${tvShowData.name} legally on MoviesFlow.`
+      : `Watch ${tvShowData.name} (${tvShowYear}). Find streaming options, cast information, and reviews on MoviesFlow.`,
     keywords: `${tvShowData.name}, watch ${tvShowData.name}, stream ${tvShowData.name}, ${tvShowData.genres?.map(g => g.name).join(', ')}, ${tvShowYear} TV series`,
     openGraph: {
-      title: `${tvShowData.name} (${tvShowYear}) - WatchNow`,
+      title: `${tvShowData.name} (${tvShowYear}) - MoviesFlow`,
       description: tvShowData.overview || `Watch ${tvShowData.name} and find streaming options.`,
-      url: `https://watchnow-movies.vercel.app/tv-show/${slug}`,
-      siteName: 'WatchNow',
+      url: `https://MoviesFlow.netlify.app/tv-show/${slug}`,
+      siteName: 'MoviesFlow',
       images: [
         {
           url: socialImage,
@@ -325,14 +325,14 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@WatchNowMovies',
-      creator: '@WatchNowMovies',
-      title: `${tvShowData.name} (${tvShowYear}) - WatchNow`,
-      description: tvShowData.overview?.substring(0, 200) || `Stream ${tvShowData.name} on WatchNow`,
+      site: '@WatchStream123',
+      creator: '@WatchStream123',
+      title: `${tvShowData.name} (${tvShowYear}) - MoviesFlow`,
+      description: tvShowData.overview?.substring(0, 200) || `Stream ${tvShowData.name} on MoviesFlow`,
       images: [socialImage],
     },
     alternates: {
-      canonical: `https://watchnow-movies.vercel.app/tv-show/${slug}`,
+      canonical: `https://MoviesFlow.netlify.app/tv-show/${slug}`,
     },
   };
 }

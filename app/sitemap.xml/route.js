@@ -1,7 +1,7 @@
 // app/sitemap.xml/route.js - FIXED VERSION
 import { NextResponse } from 'next/server';
 
-const BASE_URL = 'https://MovieFlow.vercel.app';
+const BASE_URL = 'https://MoviesFlow.netlify.app';
 
 // Function untuk generate XML sitemap
 function generateSitemapXml(urls) {

@@ -34,24 +34,24 @@ export async function generateMetadata({ params }) {
   const genre = genres.find(g => createGenreSlug(g.name) === processedSlug);
   const title = genre?.name || 'Unknown';
 
-  const pageUrl = `https://watchnow-movies.vercel.app/tv-show/genre/${genreName}`;
-  const imageUrl = 'https://live.staticflickr.com/65535/54844423650_2eea561c34_b.jpg';
+  const pageUrl = `https://MoviesFlow.netlify.app/tv-show/genre/${genreName}`;
+  const imageUrl = 'https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg';
 
   return {
-    title: `${title} TV Series - WatchNow | ${title} Shows Collection`,
-    description: `Watch the best ${title} TV series on WatchNow. Browse ${title.toLowerCase()} shows, find streaming platforms, episode guides, and ratings. Complete ${title.toLowerCase()} series database.`,
+    title: `${title} TV Series - MoviesFlow | ${title} Shows Collection`,
+    description: `Watch the best ${title} TV series on MoviesFlow. Browse ${title.toLowerCase()} shows, find streaming platforms, episode guides, and ratings. Complete ${title.toLowerCase()} series database.`,
     keywords: `${title} TV series, ${title} shows, watch ${title} TV, stream ${title} series, ${title.toLowerCase()} television`,
     openGraph: {
-      title: `${title} TV Series - WatchNow`,
+      title: `${title} TV Series - MoviesFlow`,
       description: `Discover ${title} TV series collection. Find where to stream ${title.toLowerCase()} shows.`,
       url: pageUrl,
-      siteName: 'WatchNow',
+      siteName: 'MoviesFlow',
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${title} TV Series Collection - WatchNow`,
+          alt: `${title} TV Series Collection - MoviesFlow`,
         },
       ],
       locale: 'en_US',
@@ -59,9 +59,9 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@WatchNowMovies',
-      creator: '@WatchNowMovies',
-      title: `${title} TV Series - WatchNow`,
+      site: '@WatchStream123',
+      creator: '@WatchStream123',
+      title: `${title} TV Series - MoviesFlow`,
       description: `Browse ${title} TV series and find streaming options`,
       images: [imageUrl],
     },
