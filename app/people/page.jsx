@@ -384,22 +384,22 @@ export default function PeoplePage() {
               <p className="text-gray-400 mb-4">Explore more content</p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link 
-                  href="/movie" 
+                  href="/" 
                   className="flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-semibold"
                 >
                   <FaFilm /> Browse Movies
                 </Link>
                 <Link 
-                  href="/tv" 
+                  href="/tv-show/genre/crime" 
                   className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                 >
                   <FaTv /> Browse TV Series
                 </Link>
                 <Link 
-                  href="/rankings" 
+                  href="/movie/decade/2020s/" 
                   className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold"
                 >
-                  <FaStar /> Top Rankings
+                  <FaStar /> Archives
                 </Link>
               </div>
             </div>

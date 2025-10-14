@@ -206,11 +206,8 @@ export default async function HomePage() {
                 <span className="text-sm font-medium text-white">100% Legal Information Platform</span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent leading-tight">
-                MoviesFlow
-                <span className="block bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                  Streaming Legally
-                </span>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-orange-600 to-orange-800 bg-clip-text text-transparent leading-tight">
+                MoviesFlow Streaming Legally
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">

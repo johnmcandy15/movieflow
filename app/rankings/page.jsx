@@ -774,13 +774,13 @@ export default function RankingsPage() {
               <div className="flex flex-wrap justify-center gap-4">
                 {/* ✅ FIXED: Quick links dengan path yang benar */}
                 <Link 
-                  href="/movie" 
+                  href="/" 
                   className="flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-semibold"
                 >
                   <FaFilm /> Browse Movies
                 </Link>
                 <Link 
-                  href="/tv-show" 
+                  href="/tv-show/genre/animation" 
                   className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                 >
                   <FaTv /> Browse TV Series
