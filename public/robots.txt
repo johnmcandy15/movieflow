@@ -5,7 +5,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://MovieFlow.vercel.app/sitemap.xml
+Sitemap: https://MoviesFlow.netlify.app/sitemap.xml
 
 # Crawl delay (opsional)
 Crawl-delay: 1`;
