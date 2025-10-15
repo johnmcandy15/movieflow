@@ -253,22 +253,22 @@ export default async function HomePage() {
             <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
               <h2 className="text-2xl font-bold text-center mb-8">Explore More Content</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Link href="/movie/popular/" className="group bg-blue-700 hover:bg-blue-800 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-500/50">
+                <Link href="/movie/popular/" className="group bg-blue-800 hover:bg-blue-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-500/50">
                   <FaFire className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <div className="font-bold text-lg">Popular Movies</div>
                   <div className="text-sm text-blue-200 mt-1">Legal Streaming Info</div>
                 </Link>
-                <Link href="/tv-show/popular/" className="group bg-green-700 hover:bg-green-800 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-green-500/50">
+                <Link href="/tv-show/popular/" className="group bg-green-800 hover:bg-green-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-green-500/50">
                   <FaTv className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <div className="font-bold text-lg">TV Series</div>
                   <div className="text-sm text-green-200 mt-1">Legitimate Sources</div>
                 </Link>
-                <Link href="/movie/top_rated/" className="group bg-purple-700 hover:bg-purple-800 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-purple-500/50">
+                <Link href="/movie/top_rated/" className="group bg-purple-800 hover:bg-purple-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-purple-500/50">
                   <FaStar className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <div className="font-bold text-lg">Top Rated</div>
                   <div className="text-sm text-purple-200 mt-1">Critically Acclaimed</div>
                 </Link>
-                <Link href="/movie/decade/2020s/" className="group bg-orange-700 hover:bg-orange-800 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-orange-500/50">
+                <Link href="/movie/decade/2020s/" className="group bg-orange-800 hover:bg-orange-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-orange-500/50">
                   <FaInfoCircle className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <div className="font-bold text-lg">Movie Database</div>
                   <div className="text-sm text-orange-200 mt-1">Complete Information</div>
