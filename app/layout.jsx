@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
 	  <head>
         {/* Tag verifikasi Google Search Console */}
-        <meta name="google-site-verification" content="_xeYD3d894AfkvHskmLZWum11FS51f3z72IMqm-XhcM" />
+        <meta name="google-site-verification" content="LSGOjDS36Zo6hksqRsv5uJkxoXD7aylSQHJl9ffKZz0" />
         
         {/* Schema.org markup untuk Movie Database */}
         <script
