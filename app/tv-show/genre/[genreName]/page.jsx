@@ -29,29 +29,34 @@ const decodeUrlSlug = (slug) => {
 
 export async function generateMetadata({ params }) {
   const { genreName } = await params;
+  
   const genres = await getTvSeriesGenres();
+  
+  // Decode URL slug dengan benar
   const processedSlug = decodeUrlSlug(genreName);
+  
+  // Mencari genre berdasarkan slug yang sudah diproses
   const genre = genres.find(g => createGenreSlug(g.name) === processedSlug);
-  const title = genre?.name || 'Unknown';
 
-  const pageUrl = `https://MoviesFlow.netlify.app/tv-show/genre/${genreName}`;
-  const imageUrl = 'https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg';
+  const title = genre?.name || 'Unknown';
+  
+  const pageUrl = `https://cinevisio.netlify.app/tv-show/genre/${genreName}`;
+  const imageUrl = 'https://live.staticflickr.com/65535/55081939741_c1e4e196be_b.jpg';
 
   return {
-    title: `${title} TV Series - MoviesFlow | ${title} Shows Collection`,
-    description: `Watch the best ${title} TV series on MoviesFlow. Browse ${title.toLowerCase()} shows, find streaming platforms, episode guides, and ratings. Complete ${title.toLowerCase()} series database.`,
-    keywords: `${title} TV series, ${title} shows, watch ${title} TV, stream ${title} series, ${title.toLowerCase()} television`,
+    title: `Cinevisio - ${title} TV Series`,
+    description: `Find and watch the best ${title} TV series for free on Cinevisio.`,
     openGraph: {
-      title: `${title} TV Series - MoviesFlow`,
-      description: `Discover ${title} TV series collection. Find where to stream ${title.toLowerCase()} shows.`,
+      title: `Cinevisio - ${title} TV Series`,
+      description: `Find and watch the best ${title} TV series for free on Cinevisio.`,
       url: pageUrl,
-      siteName: 'MoviesFlow',
+      siteName: 'Cinevisio',
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${title} TV Series Collection - MoviesFlow`,
+          alt: `${title} genre TV series poster`,
         },
       ],
       locale: 'en_US',
@@ -61,12 +66,9 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       site: '@WatchStream123',
       creator: '@WatchStream123',
-      title: `${title} TV Series - MoviesFlow`,
-      description: `Browse ${title} TV series and find streaming options`,
+      title: `Cinevisio - ${title} TV Series`,
+      description: `Find and watch the best ${title} TV series for free on Cinevisio.`,
       images: [imageUrl],
-    },
-    alternates: {
-      canonical: pageUrl,
     },
     other: {
       'fb:app_id': '100074345305108',

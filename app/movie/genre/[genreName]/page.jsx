@@ -5,29 +5,32 @@ import { getMoviesByGenre, getMovieGenres } from '../../../../lib/api';
 import MovieList from '../../../../components/MovieList';
 
 export async function generateMetadata({ params }) {
+  // Await params sebelum mengakses propertinya
   const { genreName } = await params;
+
   const genres = await getMovieGenres();
+
+  // Mencari genre berdasarkan nama (slug) dari URL
   const genre = genres.find(g => g.name.toLowerCase().replace(/\s/g, '-') === genreName);
   const title = genre?.name || 'Unknown';
 
-  const pageUrl = `https://MoviesFlow.netlify.app/movie/genre/${genreName}`;
-  const imageUrl = 'https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg';
+  const pageUrl = `https://cinevisio.netlify.app/movie/genre/${genreName}`;
+  const imageUrl = 'https://live.staticflickr.com/65535/55081939741_c1e4e196be_b.jpg';
 
   return {
-    title: `${title} Movies - MoviesFlow | Complete ${title} Film Collection`,
-    description: `Discover the best ${title} movies on MoviesFlow. Browse ${title.toLowerCase()} films, find streaming options, ratings, and reviews. Your ultimate ${title.toLowerCase()} movie database.`,
-    keywords: `${title} movies, ${title} films, watch ${title} movies, stream ${title} films, ${title.toLowerCase()} genre, ${title.toLowerCase()} cinema`,
+    title: `Cinevisio - ${title} Movies`,
+    description: `Find and watch the best ${title} movies for free on Cinevisio.`,
     openGraph: {
-      title: `${title} Movies - MoviesFlow`,
-      description: `Explore our ${title} movie collection. Find where to stream ${title.toLowerCase()} films legally.`,
+      title: `Cinevisio - ${title} Movies`,
+      description: `Find and watch the best ${title} movies for free on Cinevisio.`,
       url: pageUrl,
-      siteName: 'MoviesFlow',
+      siteName: 'Cinevisio',
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${title} Movies Collection - MoviesFlow`,
+          alt: `${title} genre movie poster`,
         },
       ],
       locale: 'en_US',
@@ -37,12 +40,9 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       site: '@WatchStream123',
       creator: '@WatchStream123',
-      title: `${title} Movies - MoviesFlow`,
-      description: `Browse ${title} movie collection and find streaming options`,
+      title: `Cinevisio - ${title} Movies`,
+      description: `Find and watch the best ${title} movies for free on Cinevisio.`,
       images: [imageUrl],
-    },
-    alternates: {
-      canonical: pageUrl,
     },
     other: {
       'fb:app_id': '100074345305108',

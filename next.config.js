@@ -1,10 +1,7 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // HAPUS output: 'export' jika perlu dynamic features
-  trailingSlash: true,
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,9 +13,10 @@ const nextConfig = {
         hostname: 'placehold.co',
         pathname: '/**',
       },
+      // PERBAIKAN DI SINI:
       {
         protocol: 'https',
-        hostname: 'via.placehold.co',
+        hostname: 'via.placeholder.com',  // ← tempat.com bukan tempat.co
         pathname: '/**',
       }
     ],

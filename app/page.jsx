@@ -1,312 +1,278 @@
-// app/page.jsx - SIMPLIFIED VERSION WITH SEPARATED COMPONENTS
-export const dynamic = 'force-dynamic';
+"use client";
 
-export const metadata = {
-  title: 'MoviesFlow | Stream Movies & TV Series Free - Complete Entertainment Hub',
-  description: 'MoviesFlow is your premier legal streaming platform and comprehensive movie database. Access thousands of movies and TV series with detailed information, ratings, reviews, and legitimate streaming options. Discover trending content, popular shows, and top-rated entertainment with daily updates.',
-  keywords: 'legal movie streaming, free movies online, TV series database, movie information platform, streaming guide, entertainment hub, movie reviews, TV show ratings, legitimate streaming',
-  openGraph: {
-    title: 'MoviesFlow | Legal Movie Streaming & TV Series Database',
-    description: 'MoviesFlow provides comprehensive movie information and legitimate streaming options. Access detailed databases, ratings, reviews and legal streaming guides for thousands of titles.',
-    url: 'https://MoviesFlow.netlify.app/',
-    siteName: 'MoviesFlow',
-    images: [
-      {
-        url: 'https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'MoviesFlow - Legal Movie Streaming & Information Platform',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@MoviesFlow',
-    creator: '@MoviesFlow',
-    title: 'MoviesFlow | Legal Movie Streaming & TV Series Database',
-    description: 'Discover comprehensive movie information and legitimate streaming options on MoviesFlow.',
-    images: ['https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg'],
-  },
-  alternates: {
-    canonical: 'https://MoviesFlow.netlify.app/',
-  },
-};
-
-import { getTrendingMoviesDaily, getTrendingTvSeriesDaily } from '../lib/api';
+import React from 'react';
 import Link from 'next/link';
-import { FaPlay, FaFire, FaStar, FaTv, FaUsers, FaEye, FaClock, FaInfoCircle, FaShieldAlt, FaDatabase } from 'react-icons/fa';
+import { FaHome, FaFilm, FaTv, FaSearch, FaStar, FaUsers, FaGlobe, FaUser, FaCalendar, FaTrophy } from 'react-icons/fa';
 
-// Import Client Components
-import TrendingSection from './components/TrendingSection';
+export default function About() {
+  const genres = [
+    { name: 'Action', link: '/movie/genre/action', color: 'text-orange-300' },
+    { name: 'Adventure', link: '/movie/genre/adventure', color: 'text-blue-300' },
+    { name: 'Sci-Fi', link: '/movie/genre/science-fiction', color: 'text-purple-300' },
+    { name: 'Anime', link: '/movie/genre/animation', color: 'text-pink-300' },
+    { name: 'Crime', link: '/movie/genre/crime', color: 'text-yellow-300' },
+    { name: 'Horror', link: '/movie/genre/horror', color: 'text-red-300' },
+    { name: 'Comedy', link: '/movie/genre/comedy', color: 'text-green-300' },
+    { name: 'Romance', link: '/movie/genre/romance', color: 'text-pink-400' },
+    { name: 'Thriller', link: '/movie/genre/thriller', color: 'text-indigo-300' },
+    { name: 'Mystery', link: '/movie/genre/mystery', color: 'text-gray-300' },
+    { name: 'War', link: '/movie/genre/war', color: 'text-amber-300' },
+    { name: 'Fantasy', link: '/movie/genre/fantasy', color: 'text-teal-300' },
+  ];
 
-// SEO Article Component (Server Component)
-const SEOArticle = () => {
   return (
-    <article className="prose prose-lg prose-invert prose-orange max-w-none bg-slate-800/50 rounded-2xl p-8 border border-slate-700 text-justify">
-      <h2 className="text-3xl font-bold text-white mb-6 text-center">MoviesFlow: Your Trusted Source for Legal Movie Information and Streaming Guidance</h2>
-      
-      <div className="flex items-center gap-2 mb-6 justify-center">
-        <FaShieldAlt className="text-green-500" />
-        <span className="text-green-400 font-semibold">100% Legal Platform</span>
-      </div>
-      
-      <p className="text-gray-300 text-lg leading-relaxed mb-6">
-        In today's digital entertainment landscape, finding reliable information about movies and TV series while ensuring you're accessing content through legitimate channels has become increasingly important. MoviesFlow emerges as a comprehensive solution that bridges the gap between entertainment discovery and legal streaming accessibility. As a dedicated movie information platform, we provide detailed databases, accurate ratings, genuine reviews, and guidance toward legal streaming options that respect copyright laws and support content creators.
-      </p>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">The Importance of Legal Streaming Platforms</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        The entertainment industry has undergone a massive transformation with the advent of streaming services, but this digital revolution has also brought challenges related to copyright infringement and illegal streaming. MoviesFlow addresses these concerns by positioning itself as a legitimate information hub that directs users toward authorized streaming platforms. When you use MoviesFlow, you're not just accessing entertainment information; you're participating in an ecosystem that values intellectual property rights and supports the creative industries that bring your favorite content to life.
-      </p>
-
-      <div className="bg-green-900/20 p-6 rounded-xl my-6 border-l-4 border-green-500">
-        <h4 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <FaShieldAlt className="text-green-500" />
-          Why Choose Legal Streaming Platforms?
-        </h4>
-        <ul className="text-gray-300 space-y-2 text-justify">
-          <li className="flex items-start gap-2">
-            <span className="text-green-500 mt-1">•</span>
-            <span><strong>Support Content Creators:</strong> Legal streaming ensures that directors, actors, writers, and crew members receive fair compensation for their work.</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-green-500 mt-1">•</span>
-            <span><strong>Superior Quality Experience:</strong> Legitimate platforms offer higher video quality, reliable streaming, and better user interfaces.</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-green-500 mt-1">•</span>
-            <span><strong>Enhanced Security:</strong> Official streaming services protect your devices from malware and security threats common on illegal sites.</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-green-500 mt-1">•</span>
-            <span><strong>Legal Compliance:</strong> Avoid potential legal issues associated with copyright infringement.</span>
-          </li>
-        </ul>
-      </div>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Comprehensive Movie Database Features</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        MoviesFlow stands out as more than just a streaming guide; it's a comprehensive entertainment database designed for true cinephiles. Our platform aggregates detailed information from multiple trusted sources to provide you with the most accurate and up-to-date content available. Each movie and TV series listing includes complete cast information, director details, production company information, filming locations, budget data, box office performance, and critical reception metrics. This wealth of information transforms how users discover and engage with entertainment content, moving beyond simple viewing to true appreciation of the artistic and technical aspects of filmmaking.
-      </p>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Advanced Search and Discovery Tools</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        Finding exactly what you want to watch can be challenging with the overwhelming amount of content available today. MoviesFlow addresses this through sophisticated search and discovery tools that help users navigate the entertainment landscape efficiently. Our platform allows filtering by genre, release year, rating, language, country of origin, and even specific crew members. The advanced recommendation engine analyzes your viewing preferences and suggests content you're likely to enjoy based on sophisticated algorithms that consider multiple factors beyond simple genre matching. This intelligent approach to content discovery saves users significant time while introducing them to hidden gems they might otherwise overlook.
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-6 my-8">
-        <div className="bg-slate-700/30 p-6 rounded-xl border border-slate-600 text-justify">
-          <FaDatabase className="text-3xl text-blue-500 mb-4" />
-          <h4 className="text-xl font-bold text-white mb-3">Extensive Content Library</h4>
-          <p className="text-gray-300 text-sm">
-            MoviesFlow maintains detailed information on over 500,000 movies and TV series, with daily updates to ensure accuracy. Our database includes everything from classic cinema to the latest releases, with comprehensive metadata for each title.
-          </p>
-        </div>
-        <div className="bg-slate-700/30 p-6 rounded-xl border border-slate-600 text-justify">
-          <FaInfoCircle className="text-3xl text-green-500 mb-4" />
-          <h4 className="text-xl font-bold text-white mb-3">Streaming Availability Guide</h4>
-          <p className="text-gray-300 text-sm">
-            We provide real-time information about where you can legally stream each title across multiple platforms. Our streaming availability data is updated continuously to reflect the dynamic nature of digital content licensing.
-          </p>
-        </div>
-      </div>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Supporting the Entertainment Ecosystem</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        By using MoviesFlow as your primary entertainment information source, you contribute to a healthier entertainment ecosystem. The platform operates on the principle that access to information should be free and accessible, while content consumption should properly compensate creators. This balanced approach ensures that the entertainment industry can continue to produce the high-quality content that audiences love. MoviesFlow partners with various legitimate streaming services to provide accurate availability information while maintaining complete editorial independence in our reviews and recommendations.
-      </p>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Educational Resources and Community Features</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        Beyond basic movie information, MoviesFlow serves as an educational resource for film enthusiasts. Our platform includes detailed articles about film history, genre evolution, directorial styles, and cinematic techniques. The community features allow users to create watchlists, share reviews, and participate in discussions about their favorite films and shows. These social elements transform passive viewing into active engagement with content and fellow enthusiasts. The platform also offers resources for understanding copyright law, digital rights management, and the economic models that support content creation, empowering users to make informed decisions about their entertainment consumption.
-      </p>
-
-      <div className="bg-gradient-to-r from-blue-500/20 to-green-500/20 p-6 rounded-xl my-8 border border-blue-500/30">
-        <h4 className="text-xl font-bold text-white mb-3">Industry Recognition</h4>
-        <p className="text-gray-300 italic text-justify">
-          "Platforms like MoviesFlow represent the future of responsible digital entertainment consumption. By combining comprehensive information with guidance toward legal streaming options, they create value for both consumers and content creators. This model supports sustainable content production while ensuring audiences can easily discover and access the entertainment they love through legitimate channels."
-        </p>
-        <p className="text-blue-400 font-semibold mt-3">— Digital Entertainment Industry Association</p>
-      </div>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Global Reach with Localized Content</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        MoviesFlow recognizes that entertainment preferences vary significantly across different regions and cultures. Our platform offers localized experiences for users in various countries, accounting for regional streaming availability, cultural preferences, and language considerations. This global perspective ensures that users worldwide can benefit from our comprehensive database while receiving relevant recommendations and availability information for their specific location. The platform supports multiple languages and currency displays, making it accessible to international audiences while maintaining the same commitment to legal streaming guidance across all regions.
-      </p>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Future Developments and Industry Partnerships</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        Looking ahead, MoviesFlow is committed to expanding its features and industry partnerships to better serve both users and content creators. Planned developments include enhanced virtual reality experiences for previewing content, integration with smart home entertainment systems, and advanced parental control features. The platform is also exploring partnerships with film schools and educational institutions to provide resources for aspiring filmmakers. These initiatives reinforce MoviesFlow's position as more than just a utility and establish it as a comprehensive ecosystem that supports all aspects of film appreciation and production.
-      </p>
-
-      <h3 className="text-2xl font-bold text-white mt-8 mb-4">Conclusion: The Responsible Choice for Entertainment Discovery</h3>
-      
-      <p className="text-gray-300 leading-relaxed mb-6">
-        In an era where entertainment options are virtually limitless, MoviesFlow provides the guidance and information necessary to navigate this landscape responsibly. By choosing MoviesFlow as your entertainment companion, you're not just finding something to watch; you're participating in an ecosystem that respects creative rights, supports content creators, and promotes sustainable entertainment consumption. The platform demonstrates that comprehensive information access and legal content consumption are not mutually exclusive but rather complementary aspects of modern digital entertainment.
-      </p>
-
-      <p className="text-gray-300 leading-relaxed text-justify">
-        As the entertainment industry continues to evolve, MoviesFlow remains committed to its core mission: providing unparalleled access to entertainment information while guiding users toward legitimate streaming options. This balanced approach ensures that both audiences and creators benefit from the digital transformation of entertainment, creating a sustainable model that will support the creation of amazing content for years to come. Whether you're a casual viewer or a dedicated cinephile, MoviesFlow offers the tools, information, and guidance you need to enhance your entertainment experience while supporting the industry that makes it all possible.
-      </p>
-
-      <div className="mt-8 p-4 bg-slate-700/50 rounded-lg border border-slate-600">
-        <p className="text-gray-300 text-sm text-center">
-          <strong>Disclaimer:</strong> MoviesFlow is an information platform that provides details about movies and TV series along with legitimate streaming options. We do not host or stream any content directly on our platform. All streaming occurs through authorized third-party services. Always ensure you are accessing content through legal channels in your region.
-        </p>
-      </div>
-    </article>
-  );
-};
-
-// Main HomePage Component (Server Component)
-export default async function HomePage() {
-  try {
-    // Fetch trending data untuk movies dan TV series
-    const [trendingMoviesData, trendingTvData] = await Promise.all([
-      getTrendingMoviesDaily(),
-      getTrendingTvSeriesDaily()
-    ]);
-
-    // Process data trending
-    const trendingMovies = Array.isArray(trendingMoviesData) ? trendingMoviesData : (trendingMoviesData.results || []);
-    const trendingTvSeries = Array.isArray(trendingTvData) ? trendingTvData : (trendingTvData.results || []);
-
-    // Gabungkan dan urutkan berdasarkan popularity
-    const allTrending = [...trendingMovies, ...trendingTvSeries]
-      .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-      .slice(0, 36); // Ambil lebih banyak data untuk load more
-
-    // Filter data yang memiliki poster
-    const filteredTrending = allTrending.filter(item => item.poster_path);
-
-    return (
-      <div className="min-h-screen bg-slate-900 text-white">
-        {/* Enhanced Hero Section */}
-        <section className="relative bg-gradient-to-br from-purple-900/90 via-slate-900 to-slate-950 py-16 lg:py-24 overflow-hidden">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-600/20 rounded-full blur-3xl"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="max-w-4xl mx-auto">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-                <FaShieldAlt className="text-green-400 text-sm" />
-                <span className="text-sm font-medium text-white">100% Legal Information Platform</span>
-              </div>
-
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-200 via-orange-400 to-orange-700 bg-clip-text text-transparent leading-tight">
-                MoviesFlow Streaming Legally
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Your trusted source for comprehensive movie information and legitimate streaming guidance. 
-                Access detailed databases, ratings, and legal streaming options.
-              </p>
-
-              {/* Quick Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-12">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:border-green-500/50 transition-colors">
-                  <div className="text-2xl font-bold text-white">500K+</div>
-                  <div className="text-gray-300 text-sm">Movie Database</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:border-green-500/50 transition-colors">
-                  <div className="text-2xl font-bold text-white">100%</div>
-                  <div className="text-gray-300 text-sm">Legal Guidance</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:border-green-500/50 transition-colors">
-                  <div className="text-2xl font-bold text-white">24/7</div>
-                  <div className="text-gray-300 text-sm">Updated Info</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:border-green-500/50 transition-colors">
-                  <div className="text-2xl font-bold text-white">Global</div>
-                  <div className="text-gray-300 text-sm">Streaming Data</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <div className="container mx-auto px-4 py-12">
-          {/* Trending Now Section dengan Load More yang berfungsi */}
-          <TrendingSection initialTrending={filteredTrending} />
-
-          {/* SEO Article Section */}
-          <section className="mb-16">
-            <SEOArticle />
-          </section>
-
-          {/* Quick Navigation */}
-          <section className="mb-16">
-            <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
-              <h2 className="text-2xl font-bold text-center mb-8">Explore More Content</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Link href="/movie/popular/" className="group bg-blue-800 hover:bg-blue-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-500/50">
-                  <FaFire className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <div className="font-bold text-lg">Popular Movies</div>
-                  <div className="text-sm text-blue-200 mt-1">Legal Streaming Info</div>
-                </Link>
-                <Link href="/tv-show/popular/" className="group bg-green-800 hover:bg-green-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-green-500/50">
-                  <FaTv className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <div className="font-bold text-lg">TV Series</div>
-                  <div className="text-sm text-green-200 mt-1">Legitimate Sources</div>
-                </Link>
-                <Link href="/movie/top_rated/" className="group bg-purple-800 hover:bg-purple-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-purple-500/50">
-                  <FaStar className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <div className="font-bold text-lg">Top Rated</div>
-                  <div className="text-sm text-purple-200 mt-1">Critically Acclaimed</div>
-                </Link>
-                <Link href="/movie/decade/2020s/" className="group bg-orange-800 hover:bg-orange-900 text-white p-6 rounded-xl text-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-orange-500/50">
-                  <FaInfoCircle className="text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <div className="font-bold text-lg">Movie Database</div>
-                  <div className="text-sm text-orange-200 mt-1">Complete Information</div>
-                </Link>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-    );
-  } catch (error) {
-    console.error('Error loading homepage:', error);
-    
-    return (
-      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center py-20">
-        <div className="text-center max-w-2xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
-            MoviesFlow
+    <div className="min-h-screen bg-slate-900 text-gray-300">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-b from-purple-900/50 to-slate-900 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-3 text-orange-400">
+            MovieFlow Your Ultimate Movie & TV Database
+            <span className="block text-xl md:text-4xl font-extrabold mt-2 text-orange-400">
+              Watch Stream and Discover Cinema
+            </span>
           </h1>
-          <p className="text-gray-400 text-lg mb-8">
-            We're having trouble loading content information right now. Please check your connection and try again.
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+            Your complete guide to thousands of movies, TV series, streaming info, and actor profiles. Find where to watch free and premium content in HD quality.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button 
-              onClick={() => window.location.reload()}
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
-            >
-              <FaInfoCircle /> Retry Loading
-            </button>
-            <Link 
-              href="/movie/popular" 
-              className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Browse Movie Database
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <Link href="/movie/popular" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
+              <FaFilm /> Watch Movies
+            </Link>
+            <Link href="/tv-show/popular" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
+              <FaTv /> Stream Series
+            </Link>
+            <Link href="/people" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
+              <FaUser /> Explore Actors
+            </Link>
+            <Link href="/rankings" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
+              <FaTrophy /> Top Rankings
             </Link>
           </div>
         </div>
       </div>
-    );
-  }
+
+      <div className="container mx-auto px-4 py-12">
+        {/* Main Content */}
+        <div className="bg-gray-800/50 p-8 rounded-xl shadow-lg backdrop-blur-sm">
+          {/* Introduction */}
+          <section className="mb-16">
+            <div className="text-center mb-12">
+              <img
+                src="https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg"
+                alt="Movie streaming platform - Watch movies online in HD quality"
+                width={1024}
+                height={416}
+                className="rounded-xl shadow-2xl mx-auto mb-8"
+              />
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-orange-300">
+                Watch Movies & Stream Series Anywhere
+                <span className="block text-xl md:text-4xl font-bold mt-2 text-orange-300">
+                  Your Complete Streaming Guide
+                </span>
+              </h2>
+              <div className="text-lg text-gray-400 max-w-4xl mx-auto space-y-4 text-center">
+                <p>
+                  <strong>MovieFlow</strong> is America's premier movie database and streaming guide platform. Whether you want to <strong>watch movies online</strong>, <strong>stream TV series</strong>, or find <strong>free movie streaming</strong> options, we provide comprehensive information across all major platforms including <strong>Netflix</strong>, <strong>Disney+</strong>, <strong>Prime Video</strong>, HBO Max, Hulu, and more. Our database helps you discover where to watch content in <strong>HD quality</strong>, track <strong>box office</strong> performance, and explore detailed information about your favorite films and shows.
+                </p>
+                <p>
+                  We specialize in helping users find exactly what to watch across all genres. Love <strong>action</strong> movies? We've got the latest blockbusters. Prefer <strong>adventure</strong> or <strong>sci-fi</strong>? Explore our curated collections. Looking for <strong>anime</strong> series, <strong>crime mystery</strong> thrillers, intense <strong>drama</strong>, chilling <strong>horror</strong>, heartwarming <strong>comedy</strong>, suspenseful <strong>thriller</strong>, intriguing <strong>mystery</strong>, historical <strong>war</strong> films, or magical <strong>fantasy</strong>? MovieFlow has you covered with detailed genre pages and personalized recommendations.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SEO-Optimized About Section */}
+          <section className="mb-16 bg-gray-900/50 p-8 rounded-xl">
+            <h2 className="text-3xl font-bold mb-8 text-center text-orange-300">
+              About MovieFlow: Your Ultimate Streaming Companion
+              <span className="block text-xl md:text-3xl font-bold mt-2 text-orange-300">
+                Watch • Stream • Discover • Enjoy
+              </span>
+            </h2>
+            
+            <div className="space-y-6 text-gray-400 text-justify">
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">What is MovieFlow?</h3>
+              
+              <p>
+                MovieFlow is a comprehensive movie and TV series database designed to help users <strong>watch movies online</strong>, <strong>stream TV shows</strong>, and discover new content across all streaming platforms. We answer the most common search queries like "where to watch [movie title]", "movies like [favorite film]", "best shows on Netflix", and "free movie streaming sites". Our platform covers everything from Hollywood blockbusters to international cinema, with a focus on delivering accurate streaming availability information in real-time.
+              </p>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Streaming Guide & Platform Coverage</h3>
+              
+              <p>
+                We provide detailed information about where to watch content across all major streaming services. Whether you're looking for <strong>Netflix</strong> originals, <strong>Disney+</strong> exclusives, <strong>Prime Video</strong> movies, or free streaming options, our database shows availability, pricing, and quality options (including <strong>HD quality</strong> and 4K). We track regional availability and help users find content that's accessible in their location. Our platform also compares subscription costs, identifies free trials, and highlights platform-exclusive content.
+              </p>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Genre-Specific Content Discovery</h3>
+              
+              <p>
+                MovieFlow excels at helping users explore content by genre. Our specialized sections include:
+              </p>
+              <ul className="ml-6 space-y-2">
+                <li>• <strong>Action & Adventure</strong>: Latest blockbusters, stunt-filled sequences, and epic journeys</li>
+                <li>• <strong>Sci-Fi & Fantasy</strong>: Space operas, futuristic worlds, and magical realms</li>
+                <li>• <strong>Anime & Animation</strong>: Japanese anime, animated features, and family-friendly content</li>
+                <li>• <strong>Crime Mystery & Thriller</strong>: Whodunits, police procedurals, and suspenseful stories</li>
+                <li>• <strong>Comedy & Drama</strong>: Hilarious comedies, emotional storytelling, and character-driven narratives</li>
+                <li>• <strong>Horror & Mystery</strong>: Scary movies, psychological thrillers, and paranormal content</li>
+                <li>• <strong>War & Historical</strong>: Historical battles, military dramas, and epic war stories</li>
+              </ul>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Box Office & Popularity Tracking</h3>
+              
+              <p>
+                Stay updated with the latest <strong>box office</strong> results, trending movies, and most-watched TV series. We track financial performance, opening weekend numbers, and streaming popularity metrics to help you discover what's hot right now. Our charts show top-performing content across platforms, so you can join the conversation about trending shows and films.
+              </p>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Free & Premium Streaming Options</h3>
+              
+              <p>
+                We help users find both <strong>free movie streaming</strong> options (ad-supported platforms) and premium subscription content. Our database includes information about free trials, bundle deals, and cost-effective ways to access multiple streaming services. Whether you want to watch free content or maximize your premium subscriptions, MovieFlow provides the information you need to make smart viewing choices.
+              </p>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Quality & Experience Features</h3>
+              
+              <p>
+                We prioritize content quality information, highlighting availability in <strong>HD quality</strong>, 4K, HDR, and Dolby Atmos. Our platform also includes parental guides, content ratings, and detailed episode information for TV series. We help users create watchlists, receive notifications when content becomes available on their preferred platforms, and share recommendations with friends.
+              </p>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Why Choose MovieFlow?</h3>
+              
+              <p>
+                MovieFlow stands out as the most user-friendly and comprehensive movie database because:
+              </p>
+              <ul className="ml-6 space-y-2">
+                <li>• <strong>Real-time streaming availability</strong> across all major platforms</li>
+                <li>• <strong>Personalized recommendations</strong> based on your viewing preferences</li>
+                <li>• <strong>Comprehensive genre coverage</strong> from action to fantasy</li>
+                <li>• <strong>Box office and trending data</strong> to stay current</li>
+                <li>• <strong>Free and premium streaming guides</strong> for budget-conscious viewers</li>
+                <li>• <strong>Quality information</strong> including HD, 4K, and audio formats</li>
+                <li>• <strong>Mobile-friendly design</strong> for on-the-go browsing</li>
+              </ul>
+
+              <h3 className="text-2xl font-semibold text-blue-300 mb-4">Start Your Streaming Journey Today</h3>
+              
+              <p>
+                Join millions of users who trust MovieFlow to help them decide what to watch next. Whether you're searching for "watch movie online free", "stream movies HD", "best Netflix series", "Disney+ new releases", "Prime Video movies", or specific genre content like "action movies 2024" or "horror series to watch", MovieFlow delivers accurate, up-to-date information to enhance your viewing experience. Our platform continuously updates with new releases, streaming changes, and trending content to ensure you never miss out on great entertainment.
+              </p>
+            </div>
+          </section>
+
+          {/* Features Grid */}
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold mb-12 text-center text-orange-300">
+              Key Features for Movie Lovers
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-gray-700/50 p-6 rounded-xl text-center">
+                <FaFilm className="text-4xl text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Watch Movies Online</h3>
+                <p className="text-gray-400">Find where to stream thousands of movies across Netflix, Disney+, Prime Video, and more in HD quality.</p>
+              </div>
+              <div className="bg-gray-700/50 p-6 rounded-xl text-center">
+                <FaTv className="text-4xl text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Stream TV Series</h3>
+                <p className="text-gray-400">Complete episode guides and streaming info for drama, anime, comedy, crime, and all popular genres.</p>
+              </div>
+              <div className="bg-gray-700/50 p-6 rounded-xl text-center">
+                <FaUser className="text-4xl text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Actor & Director Info</h3>
+                <p className="text-gray-400">Detailed profiles, filmographies, and streaming content featuring your favorite stars.</p>
+              </div>
+              <div className="bg-gray-700/50 p-6 rounded-xl text-center">
+                <FaCalendar className="text-4xl text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">New Releases & Box Office</h3>
+                <p className="text-gray-400">Track latest movie releases, box office results, and upcoming premieres across all platforms.</p>
+              </div>
+              <div className="bg-gray-700/50 p-6 rounded-xl text-center">
+                <FaTrophy className="text-4xl text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Top Rankings</h3>
+                <p className="text-gray-400">Discover highest-rated movies and series by genre: action, horror, comedy, thriller, and more.</p>
+              </div>
+              <div className="bg-gray-700/50 p-6 rounded-xl text-center">
+                <FaSearch className="text-4xl text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Advanced Search</h3>
+                <p className="text-gray-400">Find content by platform, genre, year, rating, and quality (HD, 4K) with precise filters.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Streaming Platforms Highlight */}
+          <section className="mb-16">
+            <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-xl">
+              <h3 className="text-2xl font-bold mb-6 text-center text-orange-300">
+                Streaming Platforms We Cover
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <div className="text-red-500 font-bold text-lg mb-2">Netflix</div>
+                  <p className="text-gray-400 text-sm">Originals, movies, series in HD</p>
+                </div>
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <div className="text-blue-400 font-bold text-lg mb-2">Disney+</div>
+                  <p className="text-gray-400 text-sm">Marvel, Star Wars, Pixar, classics</p>
+                </div>
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <div className="text-blue-300 font-bold text-lg mb-2">Prime Video</div>
+                  <p className="text-gray-400 text-sm">Included with Prime, 4K content</p>
+                </div>
+                <div className="bg-gray-800/50 p-4 rounded-lg">
+                  <div className="text-green-400 font-bold text-lg mb-2">Free Streaming</div>
+                  <p className="text-gray-400 text-sm">Ad-supported platforms & trials</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Popular Genres */}
+          <section className="mb-16">
+            <h3 className="text-2xl font-bold mb-6 text-center text-orange-300">
+              Explore Popular Genres
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
+              {genres.map((genre, index) => (
+                <Link 
+                  key={index} 
+                  href={genre.link}
+                  className="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-600/50 transition flex flex-col items-center justify-center group"
+                >
+                  <div className={`font-semibold ${genre.color} group-hover:scale-105 transition-transform`}>
+                    {genre.name}
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Browse {genre.name} →
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Call to Action */}
+          <section className="text-center py-12 bg-gradient-to-r from-orange-900/30 to-purple-900/30 rounded-xl">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-orange-300">
+              Start Streaming Today
+              <span className="block text-xl md:text-4xl font-bold mt-2 text-orange-300">
+                Find What to Watch Right Now
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+              Join millions who use MovieFlow to watch movies, stream series, and discover new favorites across Netflix, Disney+, Prime Video, and more. Get HD quality recommendations, box office updates, and personalized suggestions.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/movie/popular" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center gap-2">
+                <FaFilm /> Watch Movies Now
+              </Link>
+              <Link href="/tv-show/popular" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center gap-2">
+                <FaTv /> Stream TV Series
+              </Link>
+            </div>
+            <p className="mt-8 text-gray-400 max-w-3xl mx-auto">
+              <strong>MovieFlow</strong> - Your ultimate guide to watch movies online, stream TV shows, find free streaming options, track box office results, and explore content across Netflix, Disney+, Prime Video and more in HD quality. Discover action, adventure, sci-fi, anime, crime, drama, horror, comedy, thriller, mystery, war, fantasy, and all your favorite genres.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
 }

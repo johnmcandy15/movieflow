@@ -33,10 +33,11 @@ const DropdownMenu = ({ title, categories, genres, genrePathPrefix }) => {
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setIsOpen(false);
-      setIsGenresOpen(false);
-    }, 100);
+      setIsGenresOpen(false); // Pastikan sub-dropdown juga tertutup
+    }, 100); // Penundaan 100ms
   };
 
+  // Handler khusus untuk sub-dropdown Genres
   const handleGenresMouseEnter = () => {
     setIsGenresOpen(true);
   };
@@ -64,7 +65,7 @@ const DropdownMenu = ({ title, categories, genres, genrePathPrefix }) => {
                 key={category.href}
                 href={category.href}
                 className={dropdownItemClass}
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsOpen(false)} // Close parent dropdown on item click
               >
                 {category.label}
               </Link>
@@ -86,7 +87,7 @@ const DropdownMenu = ({ title, categories, genres, genrePathPrefix }) => {
                           key={genre.id}
                           href={`/${genrePathPrefix}/genre/${createSlug(genre.name)}`}
                           className={dropdownItemClass}
-                          onClick={() => { setIsOpen(false); setIsGenresOpen(false); }}
+                          onClick={() => { setIsOpen(false); setIsGenresOpen(false); }} // Close all on item click
                         >
                           {genre.name}
                         </Link>
@@ -124,6 +125,7 @@ export default function Navbar() {
     fetchGenres();
   }, []);
 
+  // Generate current year and decade for archives
   const currentYear = new Date().getFullYear();
   const recentYears = Array.from({ length: 5 }, (_, i) => currentYear - i);
   const decades = ['2020s', '2010s', '2000s', '1990s', '1980s'];
@@ -132,11 +134,11 @@ export default function Navbar() {
     <nav className="bg-gradient-to-b from-purple-900/50 to-slate-900 py-6 p-4 sticky top-0 z-50 shadow-lg transition-colors duration-300">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          {/* Logo dengan nama baru MoviesFlow */}
+          {/* Logo mengarah ke Trendingpage (/) - halaman about */}
           <Link href="/" className="flex items-center text-3xl font-bold transition-colors duration-200 group">
             <FaVideo className="text-white mr-2 group-hover:text-yellow-200 transition-colors" />
-            <span className="MoviesFlow-logo hover:text-white transition-colors">
-              MoviesFlow
+            <span className="rainbow-text hover:text-white transition-colors">
+              MovieFlow
             </span>
           </Link>
           <div className="hidden md:flex items-center space-x-4">
@@ -156,7 +158,7 @@ export default function Navbar() {
             
             {/* TV Series Dropdown */}
             <DropdownMenu
-              title="TV Series"
+              title="Tv Series"
               categories={[
                 { href: "/tv-show/popular", label: "Popular" },
                 { href: "/tv-show/airing_today", label: "Airing Today" },
@@ -384,22 +386,41 @@ export default function Navbar() {
         </div>
       )}
       
-      {/* CSS untuk efek MoviesFlow logo */}
+      {/* CSS untuk efek rainbow */}
       <style jsx>{`
-        .MoviesFlow-logo {
+        .rainbow-text {
           font-size: 1.8rem;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background-image: linear-gradient(
+            to right,
+            #ff0000, #ff8000, #ffff00, #80ff00, 
+            #00ff00, #00ff80, #00ffff, #0080ff, 
+            #0000ff, #8000ff, #ff00ff, #ff0080
+          );
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
-          font-weight: 800;
-          letter-spacing: -0.5px;
+          background-size: 300% 300%;
+          animation: rainbow 4s ease infinite;
         }
         
-        .MoviesFlow-logo:hover {
-          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .rainbow-hover:hover {
+          background-image: linear-gradient(
+            to right,
+            #ff0000, #ff8000, #ffff00, #80ff00, 
+            #00ff00, #00ff80, #00ffff, #0080ff, 
+            #0000ff, #8000ff, #ff00ff, #ff0080
+          );
           -webkit-background-clip: text;
           background-clip: text;
+          color: transparent;
+          background-size: 300% 300%;
+          animation: rainbow 2s ease infinite;
+        }
+        
+        @keyframes rainbow {
+          0% { background-position: 0% 50% }
+          50% { background-position: 100% 50% }
+          100% { background-position: 0% 50% }
         }
       `}</style>
     </nav>

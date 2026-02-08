@@ -1,17 +1,38 @@
-// components/MediaCard.jsx - FIXED VERSION
+// components/MediaCard.jsx
+
+"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { createMovieSlug, createTvSlug } from '../utils/slugUtils';
+import { useState } from 'react';
+
+// Fungsi utilitas untuk membuat slug dari item media
+const createSlug = (item) => {
+  const title = item.title || item.name;
+  if (!title) return '';
+
+  const baseSlug = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').trim();
+
+  let year = '';
+  if (item.release_date) {
+    year = item.release_date.substring(0, 4);
+  } else if (item.first_air_date) {
+    year = item.first_air_date.substring(0, 4);
+  }
+  return `${baseSlug}-${year}`;
+};
 
 export default function MediaCard({ mediaItem }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   const posterPath = mediaItem.poster_path;
   const imageUrl = posterPath
     ? `https://image.tmdb.org/t/p/w500${posterPath}`
-    : 'https://placehold.co/500x750/374151/9CA3AF?text=No+Image';
+    : 'https://via.placeholder.com/500x750.png?text=No+Image';
 
   const isMovie = mediaItem.title !== undefined;
   const title = isMovie ? mediaItem.title : mediaItem.name;
+  const mediaType = isMovie ? 'movie' : 'tv-show';
 
   let year = '';
   if (mediaItem.release_date) {
@@ -22,61 +43,47 @@ export default function MediaCard({ mediaItem }) {
     year = 'N/A';
   }
 
-  // Gunakan fungsi slug yang terpusat dengan format title-year-id
-  const mediaSlug = isMovie ? createMovieSlug(mediaItem) : createTvSlug(mediaItem);
-  
-  // ✅ FIXED: Gunakan path yang benar untuk movie dan tv show
-  const linkHref = isMovie ? `/movie/${mediaSlug}` : `/tv-show/${mediaSlug}`;
+  const mediaSlug = createSlug(mediaItem);
+  const linkHref = `/${mediaType}/${mediaSlug}`;
 
   return (
-    <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
-      <Link href={linkHref} className="block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-gray-800">
-        <div className="relative w-full aspect-[2/3] bg-gray-700">
+    <div
+      className="relative group cursor-pointer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Link href={linkHref} className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div className="relative w-full h-80 bg-gray-800">
           <Image
             src={imageUrl}
             alt={title}
             fill
-            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZFRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            sizes="(max-width: 600px) 50vw, (max-width: 1200px) 25vw, 15vw"
+            style={{ objectFit: 'cover' }}
+            className="transition-transform duration-300 transform group-hover:scale-110"
           />
-          
-          {/* Rating Badge */}
-          {mediaItem.vote_average && (
-            <div className="absolute top-2 right-2 bg-black/80 text-white px-2 py-1 rounded-full text-xs font-bold backdrop-blur-sm">
-              ⭐ {mediaItem.vote_average.toFixed(1)}
-            </div>
-          )}
-          
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-            <div>
-              <h3 className="text-white text-sm font-bold line-clamp-2">
-                {title}
-              </h3>
-              <p className="text-gray-300 text-xs mt-1">
-                {year} • {isMovie ? 'Movie' : 'TV Series'}
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        {/* Title for non-hover state */}
-        <div className="p-3">
-          <h3 className="text-white text-sm font-semibold line-clamp-2 mb-1">
-            {title}
-          </h3>
-          <div className="flex justify-between items-center text-xs text-gray-400">
-            <span>{year}</span>
-            {mediaItem.vote_average && (
-              <span className="flex items-center gap-1">
-                ⭐ {mediaItem.vote_average.toFixed(1)}
-              </span>
-            )}
+
+          {/* Overlay dan Teks yang Muncul Saat Hover */}
+          <div className={`absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-4 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+            <h3 className="text-white text-lg font-bold">
+              {title}
+            </h3>
+            <p className="text-gray-300 text-sm font-light">
+              ({year})
+            </p>
           </div>
         </div>
       </Link>
+
+      {/* Tampilan Judul di Bawah Poster */}
+      <div className="mt-2 text-center px-1">
+        <h3 className="text-white text-sm font-semibold truncate">
+          {title}
+        </h3>
+        <p className="text-gray-400 text-xs font-light">
+          ({year})
+        </p>
+      </div>
     </div>
   );
 }

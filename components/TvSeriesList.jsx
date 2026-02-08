@@ -1,6 +1,6 @@
 // components/TvSeriesList.jsx
+
 import MediaCard from './MediaCard';
-import { createTvSlug } from '../utils/slugUtils'; // Pastikan import fungsi ini
 
 export default function TvSeriesList({ series }) {
   if (!series || series.length === 0) {
@@ -10,11 +10,7 @@ export default function TvSeriesList({ series }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       {series.map((item) => (
-        <MediaCard 
-          key={item.id} 
-          mediaItem={item}
-          slug={createTvSlug(item)} // Tambahkan prop slug
-        />
+        <MediaCard key={item.id} mediaItem={item} />
       ))}
     </div>
   );
