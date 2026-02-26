@@ -39,8 +39,8 @@ export async function generateMetadata({ params }) {
   if (CATEGORIES.includes(slug)) {
     const title = slug.replace(/_/g, ' ').toUpperCase();
     return {
-      title: `Cinevisio - ${title} Movies`,
-      description: `Explore the ${title} movies collection on Cinevisio.`,
+      title: `MovieFlow - ${title} Movies`,
+      description: `Explore the ${title} movies collection on MovieFlow.`,
     };
   }
 
@@ -51,8 +51,8 @@ export async function generateMetadata({ params }) {
     const genres = await getMovieGenres();
     const genreName = genres.find(g => g.id == genreId)?.name || 'Unknown';
     return {
-      title: `Cinevisio - ${genreName} Movies`,
-      description: `Discover ${genreName} movies on Cinevisio.`,
+      title: `MovieFlow - ${genreName} Movies`,
+      description: `Discover ${genreName} movies on MovieFlow.`,
     };
   }
 
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }) {
   // Jika data tidak ditemukan, kembalikan metadata dasar
   if (!movieData) {
     return {
-      title: 'Cinevisio',
+      title: 'MovieFlow',
       description: 'Find your favorite movies to stream.',
     };
   }
@@ -99,13 +99,13 @@ export async function generateMetadata({ params }) {
   const socialImageAlt = `${movieData.title} poster`;
 
   return {
-    title: `Cinevisio - ${movieData.title}`,
+    title: `MovieFlow - ${movieData.title}`,
     description: movieData.overview || `Detailed information for movie ${movieData.title}`,
     openGraph: {
       title: movieData.title,
       description: movieData.overview || `Detailed information for movie ${movieData.title}`,
-      url: `https://cinevisio.netlify.app/movie/${slug}`,
-      siteName: 'Cinevisio',
+      url: `https://moviesflow.netlify.app/movie/${slug}`,
+      siteName: 'MovieFlow',
       images: [
         {
           url: socialImage,

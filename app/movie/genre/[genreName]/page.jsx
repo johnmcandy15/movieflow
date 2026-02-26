@@ -14,17 +14,17 @@ export async function generateMetadata({ params }) {
   const genre = genres.find(g => g.name.toLowerCase().replace(/\s/g, '-') === genreName);
   const title = genre?.name || 'Unknown';
 
-  const pageUrl = `https://cinevisio.netlify.app/movie/genre/${genreName}`;
-  const imageUrl = 'https://live.staticflickr.com/65535/55081939741_c1e4e196be_b.jpg';
+  const pageUrl = `https://moviesflow.netlify.app/movie/genre/${genreName}`;
+  const imageUrl = 'https://live.staticflickr.com/65535/54853678122_7206609f34_b.jpg';
 
   return {
-    title: `Cinevisio - ${title} Movies`,
-    description: `Find and watch the best ${title} movies for free on Cinevisio.`,
+    title: `MovieFlow - ${title} Movies`,
+    description: `Find and watch the best ${title} movies for free on MovieFlow.`,
     openGraph: {
-      title: `Cinevisio - ${title} Movies`,
-      description: `Find and watch the best ${title} movies for free on Cinevisio.`,
+      title: `MovieFlow - ${title} Movies`,
+      description: `Find and watch the best ${title} movies for free on MovieFlow.`,
       url: pageUrl,
-      siteName: 'Cinevisio',
+      siteName: 'MovieFlow',
       images: [
         {
           url: imageUrl,
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       site: '@WatchStream123',
       creator: '@WatchStream123',
-      title: `Cinevisio - ${title} Movies`,
-      description: `Find and watch the best ${title} movies for free on Cinevisio.`,
+      title: `MovieFlow - ${title} Movies`,
+      description: `Find and watch the best ${title} movies for free on MovieFlow.`,
       images: [imageUrl],
     },
     other: {
